@@ -52,6 +52,22 @@ export class Student {
     default: ApplicationStatus.APPLICATION_CREATED,
   })
   status: ApplicationStatus;
+
+  @Prop({
+    type: Number,
+    required: false,
+    default: null,
+  })
+  examScore?: number | null;
+
+  @Prop({
+    type: String,
+    required: false,
+    default: null,
+    trim: true,
+  })
+  assignedCourse?: string | null;
 }
 
 export const StudentSchema = SchemaFactory.createForClass(Student);
+

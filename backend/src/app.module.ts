@@ -8,6 +8,7 @@ import { UsersService } from './users/users.service.js';
 import { UsersModule } from './users/users.module.js';
 import { AuthModule } from './auth/auth.module.js';
 import { StudentsModule } from './students/students.module.js';
+import { AdmissionModule } from './admission/admission.module.js';
 
 @Module({
   imports: [
@@ -24,10 +25,13 @@ import { StudentsModule } from './students/students.module.js';
     AuthModule,
 
     StudentsModule,
+
+    AdmissionModule,
   ],
 
   controllers: [AppController],
   providers: [AppService],
 })
 export class AppModule {}
+
 
