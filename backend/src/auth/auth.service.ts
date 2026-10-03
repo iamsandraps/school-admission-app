@@ -1,6 +1,7 @@
 import {
   ConflictException,
   Injectable,
+  OnModuleInit,
   UnauthorizedException,
 } from '@nestjs/common';
 
@@ -16,11 +17,27 @@ import { LoginDto } from './dto/login.dto.js';
 import { Role } from '../common/enums/role.enum.js';
 
 @Injectable()
-export class AuthService {
+export class AuthService implements OnModuleInit {
   constructor(
     private readonly usersService: UsersService,
     private readonly jwtService: JwtService,
   ) {}
+
+  async onModuleInit() {
+    // Seed default Admission Team user if none exists
+    const defaultAdmissionEmail = 'admission@school.com';
+    const existing = await this.usersService.findByEmail(defaultAdmissionEmail);
+    if (!existing) {
+      const hashedPassword = await bcrypt.hash('password123', 10);
+      await this.usersService.create({
+        name: 'Admission Team',
+        email: defaultAdmissionEmail,
+        password: hashedPassword,
+        role: Role.ADMISSION_TEAM,
+      });
+      console.log('Default Admission Team user created: admission@school.com / password123');
+    }
+  }
 
   async register(registerDto: RegisterDto) {
     const existingUser =
@@ -40,12 +57,14 @@ export class AuthService {
         10,
       );
 
+    const userRole = registerDto.role || Role.PARENT;
+
     const user =
       await this.usersService.create({
         name: registerDto.name,
         email: registerDto.email.toLowerCase(),
         password: hashedPassword,
-        role: Role.PARENT,
+        role: userRole,
       });
 
     return {
