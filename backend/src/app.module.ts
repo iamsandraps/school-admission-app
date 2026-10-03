@@ -9,6 +9,7 @@ import { UsersModule } from './users/users.module.js';
 import { AuthModule } from './auth/auth.module.js';
 import { StudentsModule } from './students/students.module.js';
 import { AdmissionModule } from './admission/admission.module.js';
+import { RegistrationModule } from './registration/registration.module.js';
 
 @Module({
   imports: [
@@ -27,6 +28,8 @@ import { AdmissionModule } from './admission/admission.module.js';
     StudentsModule,
 
     AdmissionModule,
+
+    RegistrationModule,
   ],
 
   controllers: [AppController],

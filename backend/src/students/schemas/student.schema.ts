@@ -67,6 +67,19 @@ export class Student {
     trim: true,
   })
   assignedCourse?: string | null;
+
+  @Prop({
+    type: Boolean,
+    default: false,
+  })
+  registrationFeePaid: boolean;
+
+  @Prop({
+    type: Date,
+    required: false,
+    default: null,
+  })
+  registrationFeePaidAt?: Date | null;
 }
 
 export const StudentSchema = SchemaFactory.createForClass(Student);

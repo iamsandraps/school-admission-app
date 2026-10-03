@@ -131,6 +131,7 @@ export class StudentsService {
       previousSchool: student.previousSchool,
       applyingGrade: student.applyingGrade,
       status: student.status,
+      registrationFeePaid: student.registrationFeePaid ?? false,
       createdAt: (student as any).createdAt,
       updatedAt: (student as any).updatedAt,
     };
