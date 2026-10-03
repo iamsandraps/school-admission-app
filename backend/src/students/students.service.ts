@@ -132,6 +132,7 @@ export class StudentsService {
       applyingGrade: student.applyingGrade,
       status: student.status,
       registrationFeePaid: student.registrationFeePaid ?? false,
+      examSlotId: student.examSlotId ? student.examSlotId.toString() : null,
       createdAt: (student as any).createdAt,
       updatedAt: (student as any).updatedAt,
     };

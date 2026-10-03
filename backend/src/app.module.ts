@@ -10,6 +10,7 @@ import { AuthModule } from './auth/auth.module.js';
 import { StudentsModule } from './students/students.module.js';
 import { AdmissionModule } from './admission/admission.module.js';
 import { RegistrationModule } from './registration/registration.module.js';
+import { ExamSlotsModule } from './exam-slots/exam-slots.module.js';
 
 @Module({
   imports: [
@@ -30,6 +31,8 @@ import { RegistrationModule } from './registration/registration.module.js';
     AdmissionModule,
 
     RegistrationModule,
+
+    ExamSlotsModule,
   ],
 
   controllers: [AppController],

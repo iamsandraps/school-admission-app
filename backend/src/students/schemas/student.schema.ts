@@ -80,6 +80,14 @@ export class Student {
     default: null,
   })
   registrationFeePaidAt?: Date | null;
+
+  @Prop({
+    type: MongooseSchema.Types.ObjectId,
+    ref: 'ExamSlot',
+    required: false,
+    default: null,
+  })
+  examSlotId?: MongooseSchema.Types.ObjectId | string | null;
 }
 
 export const StudentSchema = SchemaFactory.createForClass(Student);
